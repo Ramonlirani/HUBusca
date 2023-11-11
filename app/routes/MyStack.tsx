@@ -9,7 +9,7 @@ export const MyStack = () => {
       <>
          <Navigator>
             <Screen
-               name="Login"
+               name="Homepage"
                component={HomePage}
                options={{ headerShown: false }}
             />
