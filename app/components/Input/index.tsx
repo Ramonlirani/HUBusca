@@ -1,20 +1,37 @@
 import { useState } from "react";
-import { Container, InputSearch, StyledIcon, IconButton } from "./styles";
+import {
+   InputContainer,
+   InputSearch,
+   StyledIcon,
+   IconButton,
+   CardContainer,
+} from "./styles";
+import { GestureResponderEvent } from "react-native";
+import Card from "../Card";
 
-export default function Input() {
+interface InputProps {
+   handleAsyncStorage: (event: GestureResponderEvent) => void;
+}
+
+export default function Input({ handleAsyncStorage }: InputProps) {
    const [inputValue, setInputValue] = useState("");
 
    return (
-      <Container>
-         <InputSearch
-            placeholder="Buscar"
-            placeholderTextColor={"#f5f5f5"}
-            value={inputValue}
-            onChangeText={(value) => setInputValue(value)}
-         ></InputSearch>
-         <IconButton>
-            <StyledIcon name="search" />
-         </IconButton>
-      </Container>
+      <>
+         <InputContainer>
+            <InputSearch
+               placeholder="Buscar"
+               placeholderTextColor={"#f5f5f5"}
+               value={inputValue}
+               onChangeText={(value) => setInputValue(value)}
+            ></InputSearch>
+            <IconButton onPress={handleAsyncStorage}>
+               <StyledIcon name="search" />
+            </IconButton>
+         </InputContainer>
+         <CardContainer>
+            <Card />
+         </CardContainer>
+      </>
    );
 }
