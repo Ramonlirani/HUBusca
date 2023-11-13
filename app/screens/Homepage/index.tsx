@@ -1,11 +1,12 @@
 import { Container } from "./styles";
-import { useEffect, useState } from "react";
+import { useState, useCallback } from "react";
 import Header from "../../components/Header";
 import Input from "../../components/Input";
 import { UserProps } from "../../types/user";
 import { KeyboardAvoidingView } from "react-native";
 import apiGitHub from "../../services/api";
 import { saveUserDataHistory, saveUserHistory } from "../../utils/AsyncStorage";
+import { useFocusEffect } from "@react-navigation/native";
 
 export const HomePage = () => {
    const [user, setUser] = useState<UserProps>({
@@ -54,6 +55,25 @@ export const HomePage = () => {
       }
    };
 
+   const resetSearch = () => {
+      setUser({
+         name: "",
+         login: "",
+         followers: 0,
+         following: 0,
+         id: 0,
+         location: "",
+         avatar_url: "",
+         repository_public: 0,
+         repository_url: "",
+      });
+   };
+
+   useFocusEffect(
+      useCallback(() => {
+         resetSearch();
+      }, [])
+   );
    return (
       <KeyboardAvoidingView style={{ flex: 1 }}>
          <Container>
