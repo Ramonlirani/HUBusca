@@ -9,7 +9,7 @@ import { ButtonDelete } from "../ButtonDelete";
 import { ButtonBack } from "../ButtonBack";
 import { UserProps } from "../../types/user";
 import { useEffect, useState } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useAsyncStorage } from "@react-native-async-storage/async-storage";
 import { FlatList } from "react-native";
 import { Card } from "../Card";
 
@@ -20,9 +20,12 @@ export function HistoryList() {
       getUserHistory();
    }, []);
 
+   const { getItem } = useAsyncStorage("@user_history");
+   const { removeItem } = useAsyncStorage("@user_history");
+
    const getUserHistory = async () => {
       try {
-         const json = await AsyncStorage.getItem("@user_history");
+         const json = await getItem();
          if (json !== null) {
             const userDataHistory = JSON.parse(json);
             setUserHistory(userDataHistory);
@@ -34,7 +37,7 @@ export function HistoryList() {
 
    const handleClearHistory = async () => {
       try {
-         await AsyncStorage.removeItem("@user_history");
+         await removeItem();
          setUserHistory([]);
       } catch (error) {
          console.error("Error clearing user history from AsyncStorage:", error);

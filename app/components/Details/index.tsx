@@ -1,4 +1,4 @@
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useAsyncStorage } from "@react-native-async-storage/async-storage";
 import { ProfileUser } from "../ProfileUser";
 import { useEffect, useState } from "react";
 import { Loading } from "../Loading";
@@ -10,9 +10,11 @@ export const Details = () => {
       getUserFromAsyncStorage();
    }, []);
 
+   const { getItem } = useAsyncStorage("@user_data");
+
    const getUserFromAsyncStorage = async () => {
       try {
-         const json = await AsyncStorage.getItem("@user_data");
+         const json = await getItem();
          if (json !== null) {
             const user = JSON.parse(json);
             setUser(user);
