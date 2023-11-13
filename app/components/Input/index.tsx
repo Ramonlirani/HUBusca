@@ -6,15 +6,22 @@ import {
    IconButton,
    CardContainer,
 } from "./styles";
-import { GestureResponderEvent } from "react-native";
-import Card from "../Card";
+import { Card } from "../Card";
+import { UserProps } from "../../types/user";
 
-interface InputProps {
-   handleAsyncStorage: (event: GestureResponderEvent) => void;
-}
-
-export default function Input({ handleAsyncStorage }: InputProps) {
+export default function Input({
+   userSearch,
+   user,
+}: {
+   userSearch: (inputValue: string) => void;
+   user: UserProps;
+}) {
    const [inputValue, setInputValue] = useState("");
+
+   function handleSearchUsers() {
+      userSearch(inputValue);
+      setInputValue("");
+   }
 
    return (
       <>
@@ -25,13 +32,15 @@ export default function Input({ handleAsyncStorage }: InputProps) {
                value={inputValue}
                onChangeText={(value) => setInputValue(value)}
             ></InputSearch>
-            <IconButton onPress={handleAsyncStorage}>
+            <IconButton onPress={handleSearchUsers}>
                <StyledIcon name="search" />
             </IconButton>
          </InputContainer>
-         <CardContainer>
-            <Card />
-         </CardContainer>
+         {user.name !== "" && (
+            <CardContainer>
+               <Card user={user} />
+            </CardContainer>
+         )}
       </>
    );
 }

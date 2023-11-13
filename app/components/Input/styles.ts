@@ -9,8 +9,9 @@ export const InputContainer = styled.View`
 `;
 
 export const CardContainer = styled.View`
-   align-items: center;
    padding-top: 10px;
+   padding-right: 40px;
+   padding-left: 40px;
 `;
 
 export const InputSearch = styled.TextInput`
