@@ -2,12 +2,10 @@ import Icon from "react-native-vector-icons/Feather";
 import styled from "styled-components/native";
 
 export const Container = styled.View`
-   width: 78%;
-   height: 40%;
-   align-items: center;
    border-radius: 6px;
    border-width: 1px;
    border-color: white;
+   margin-bottom: 10px;
 `;
 
 export const InfoAvatarNameContainer = styled.View`
@@ -26,7 +24,7 @@ export const NameText = styled.Text`
    font-size: 18px;
    margin-left: 20px;
    font-weight: normal;
-   color: ${({ theme }) => theme.colors.text_primary};
+   color: ${({ theme }) => theme.colors.blue_text};
    font-family: monospace;
 `;
 
