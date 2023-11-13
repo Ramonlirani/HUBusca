@@ -1,14 +1,19 @@
 import { useAsyncStorage } from "@react-native-async-storage/async-storage";
-import { ProfileUser } from "../ProfileUser";
+import { ProfileUser } from "../../components/ProfileUser";
 import { useEffect, useState } from "react";
-import { Loading } from "../Loading";
+import { Loading } from "../../components/Loading";
+import { Container } from "./styles";
 
-export const Details = () => {
+export const Details = ({ route }: any) => {
    const [user, setUser] = useState();
 
    useEffect(() => {
-      getUserFromAsyncStorage();
-   }, []);
+      if (route.params && route.params.user) {
+         setUser(route.params.user);
+      } else {
+         getUserFromAsyncStorage();
+      }
+   }, [route.params]);
 
    const { getItem } = useAsyncStorage("@user_data");
 
@@ -23,5 +28,8 @@ export const Details = () => {
          console.error("Erro ao buscar os dados do LocalStorage", error);
       }
    };
-   return <>{user ? <ProfileUser user={user} /> : <Loading />}</>;
+
+   return (
+      <Container>{user ? <ProfileUser user={user} /> : <Loading />}</Container>
+   );
 };

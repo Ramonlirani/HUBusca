@@ -56,7 +56,7 @@ export const ProfileUser = ({ user }: { user: UserProps }) => {
          <Container>
             <ContainerButtons>
                <ButtonBack />
-               <ButtonHistory />
+               <ButtonHistory user={user} />
             </ContainerButtons>
             <HeaderContainer>
                <Avatar

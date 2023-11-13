@@ -1,8 +1,8 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import { HomePage } from "../screens/Homepage";
-import { Profile } from "../screens/Profile";
 import { History } from "../screens/History";
+import { Details } from "../screens/Details";
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
@@ -16,13 +16,13 @@ export const MyStack = () => {
                options={{ headerShown: false }}
             />
             <Screen
-               name="Profile"
-               component={Profile}
+               name="History"
+               component={History}
                options={{ headerShown: false }}
             />
             <Screen
-               name="History"
-               component={History}
+               name="Details"
+               component={Details}
                options={{ headerShown: false }}
             />
          </Navigator>

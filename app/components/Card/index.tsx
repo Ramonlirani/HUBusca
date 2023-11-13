@@ -18,7 +18,7 @@ import { StackNavigationProp } from "@react-navigation/stack";
 
 type StackParamList = {
    Homepage: undefined;
-   Profile: undefined;
+   Details: { user: UserProps };
 };
 
 type HomeScreenNavigationProp = StackNavigationProp<StackParamList, "Homepage">;
@@ -27,7 +27,7 @@ export const Card = ({ user }: { user: UserProps }) => {
    const navigation = useNavigation<HomeScreenNavigationProp>();
 
    const handleAvatarPress = () => {
-      navigation.navigate("Profile");
+      navigation.navigate("Details", { user });
    };
 
    return (

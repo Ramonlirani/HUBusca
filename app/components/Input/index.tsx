@@ -31,7 +31,7 @@ export default function Input({
                placeholderTextColor={"#f5f5f5"}
                value={inputValue}
                onChangeText={(value) => setInputValue(value)}
-            ></InputSearch>
+            />
             <IconButton onPress={handleSearchUsers}>
                <StyledIcon name="search" />
             </IconButton>
