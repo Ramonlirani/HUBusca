@@ -3,8 +3,9 @@ import { useEffect, useState } from "react";
 import Header from "../../components/Header";
 import Input from "../../components/Input";
 import { UserProps } from "../../types/user";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Alert } from "react-native";
+import { KeyboardAvoidingView } from "react-native";
+import apiGitHub from "../../services/api";
+import { saveUserDataHistory, saveUserHistory } from "../../utils/AsyncStorage";
 
 export const HomePage = () => {
    const [user, setUser] = useState<UserProps>({
@@ -18,40 +19,47 @@ export const HomePage = () => {
       repository_public: 0,
       repository_url: "",
    });
-   const [value, setValue] = useState("");
 
-   async function handleAsyncStorage() {
+   const userSearch = async (login: string) => {
       try {
-         await AsyncStorage.setItem("@user_data", user);
-         getUserData();
-      } catch (error) {
-         Alert.alert("Algo deu errado ao salvar as informações");
-      }
-   }
+         const res = await apiGitHub.get(`/users/${login}`);
 
-   async function getUserData() {
-      try {
-         const res = await AsyncStorage.getItem("@user_data");
-         if (res) {
-            setValue(res);
-         }
-      } catch (error) {
-         Alert.alert("Algo deu errado tente novamente mais tarde");
-      }
-   }
+         const newUser = {
+            name: res.data.name,
+            login: res.data.login,
+            followers: res.data.followers,
+            following: res.data.following,
+            id: res.data.id,
+            location: res.data.location,
+            avatar_url: res.data.avatar_url,
+            repository_public: res.data.public_repos,
+            repository_url: res.data.repos_url,
+         };
 
-   useEffect(() => {
-      getUserData();
-   }, []);
+         setUser(newUser);
+         saveUserDataHistory(newUser);
+         saveUserHistory(newUser);
+      } catch (error) {
+         setUser({
+            name: "",
+            login: "",
+            followers: 0,
+            following: 0,
+            id: 0,
+            location: "",
+            avatar_url: "",
+            repository_public: 0,
+            repository_url: "",
+         });
+      }
+   };
 
    return (
-      <Container>
-         <Header />
-         <Input
-            handleAsyncStorage={handleAsyncStorage}
-            setUser={setUser}
-            value={value}
-         />
-      </Container>
+      <KeyboardAvoidingView style={{ flex: 1 }}>
+         <Container>
+            <Header />
+            <Input userSearch={userSearch} user={user} />
+         </Container>
+      </KeyboardAvoidingView>
    );
 };
