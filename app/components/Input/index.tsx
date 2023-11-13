@@ -27,7 +27,7 @@ export default function Input({
       <>
          <InputContainer>
             <InputSearch
-               placeholder="Buscar"
+               placeholder="Search"
                placeholderTextColor={"#f5f5f5"}
                value={inputValue}
                onChangeText={(value) => setInputValue(value)}

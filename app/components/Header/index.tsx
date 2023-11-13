@@ -4,7 +4,7 @@ export default function Header() {
    return (
       <Container>
          <Title>HUBusca</Title>
-         <SubTitle>Pesquise pelo Github</SubTitle>
+         <SubTitle>Search for your github login</SubTitle>
       </Container>
    );
 }
