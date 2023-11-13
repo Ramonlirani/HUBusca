@@ -4,12 +4,21 @@ import styled from "styled-components/native";
 
 export const Container = styled(SafeAreaView)`
    flex: 1;
-   padding-top: 40px;
+   padding-top: 10px;
    background-color: ${({ theme }) => theme.colors.primary};
+`;
+export const ContainerButtons = styled.View`
+   height: 40px;
+   flex-direction: row;
+   justify-content: space-between;
+   padding-top: 25px;
+   padding-left: 40px;
+   padding-right: 40px;
+   align-items: center;
 `;
 
 export const HeaderContainer = styled.View`
-   height: 200px;
+   margin: 30px 0;
    flex-direction: row;
    justify-content: center;
    align-items: center;
@@ -27,7 +36,7 @@ export const HeaderTextContainer = styled.View`
 
 export const NameText = styled.Text`
    font-size: 22px;
-   margin-left: 20px;
+   margin-left: 5px;
    font-weight: normal;
    color: ${({ theme }) => theme.colors.text_primary};
    font-family: monospace;
@@ -35,7 +44,7 @@ export const NameText = styled.Text`
 
 export const LoginText = styled.Text`
    font-size: 16px;
-   margin-left: 20px;
+   margin-left: 5px;
    font-weight: normal;
    color: ${({ theme }) => theme.colors.text_secondary};
    font-family: monospace;
@@ -43,6 +52,10 @@ export const LoginText = styled.Text`
 
 export const HeaderDataUserContainer = styled.View`
    flex-direction: row;
+   justify-content: space-between;
+   width: 100%;
+   padding-right: 40px;
+   padding-left: 40px;
 `;
 
 export const HeaderLocationUserContainer = styled.View`
@@ -68,7 +81,6 @@ export const LocationText = styled.Text`
 export const HeaderIDUserContainer = styled.View`
    flex-direction: row;
    align-items: center;
-   padding-left: 40px;
    padding-bottom: 6px;
 `;
 
