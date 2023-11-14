@@ -58,7 +58,7 @@ export function HistoryList() {
                keyExtractor={(item) => item.id.toString()}
                ListEmptyComponent={() => (
                   <EmptyContainer>
-                     <EmptyText>Lista está vazia</EmptyText>
+                     <EmptyText>List is empty</EmptyText>
                   </EmptyContainer>
                )}
                contentContainerStyle={{
