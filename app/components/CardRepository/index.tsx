@@ -17,6 +17,9 @@ import {
    DataLastCommitText,
    LastCommitContainer,
    TouchableOpacityContainer,
+   EmptyText,
+   EmptyContainer,
+   StyledIconEmpty,
 } from "./styles";
 import { formatDate } from "../DateFormatter";
 import { getColorForLanguage } from "../../theme";
@@ -43,48 +46,55 @@ export const CardRepository = ({ repositoryList }: CardRepositoryProps) => {
    return (
       <>
          <TittleText>Popular repositories</TittleText>
-         <FlatList
-            data={repositoryList}
-            showsVerticalScrollIndicator={true}
-            keyExtractor={(item) => item.id.toString()}
-            renderItem={({ item }) => (
-               <TouchableOpacityContainer
-                  onPress={() => handlePress(item.html_url)}
-               >
-                  <CardContainer>
-                     <HeaderText>
-                        <NameText>{item.name}</NameText>
-                        <PublicText>Public</PublicText>
-                     </HeaderText>
-                     <DescriptionText>{item.description}</DescriptionText>
-                     <DataRepoContainer>
-                        <TechContainer>
-                           <CircleColorTech
-                              style={{
-                                 backgroundColor: getColorForLanguage(
-                                    item.language
-                                 ),
-                              }}
-                           />
-                           <TechText>{item.language}</TechText>
-                        </TechContainer>
-                        <CreateAtContainer>
-                           <CreateAtText>CreateAt:</CreateAtText>
-                           <DataCreateAtText>
-                              {formatDate(item.created_at)}
-                           </DataCreateAtText>
-                        </CreateAtContainer>
-                     </DataRepoContainer>
-                     <LastCommitContainer>
-                        <LastCommitText>Last Commit:</LastCommitText>
-                        <DataLastCommitText>
-                           {formatDate(item.pushed_at)}
-                        </DataLastCommitText>
-                     </LastCommitContainer>
-                  </CardContainer>
-               </TouchableOpacityContainer>
-            )}
-         />
+         {repositoryList.length > 0 ? (
+            <FlatList
+               data={repositoryList}
+               showsVerticalScrollIndicator={true}
+               keyExtractor={(item) => item.id.toString()}
+               renderItem={({ item }) => (
+                  <TouchableOpacityContainer
+                     onPress={() => handlePress(item.html_url)}
+                  >
+                     <CardContainer>
+                        <HeaderText>
+                           <NameText>{item.name}</NameText>
+                           <PublicText>Public</PublicText>
+                        </HeaderText>
+                        <DescriptionText>{item.description}</DescriptionText>
+                        <DataRepoContainer>
+                           <TechContainer>
+                              <CircleColorTech
+                                 style={{
+                                    backgroundColor: getColorForLanguage(
+                                       item.language
+                                    ),
+                                 }}
+                              />
+                              <TechText>{item.language}</TechText>
+                           </TechContainer>
+                           <CreateAtContainer>
+                              <CreateAtText>CreateAt:</CreateAtText>
+                              <DataCreateAtText>
+                                 {formatDate(item.created_at)}
+                              </DataCreateAtText>
+                           </CreateAtContainer>
+                        </DataRepoContainer>
+                        <LastCommitContainer>
+                           <LastCommitText>Last Commit:</LastCommitText>
+                           <DataLastCommitText>
+                              {formatDate(item.pushed_at)}
+                           </DataLastCommitText>
+                        </LastCommitContainer>
+                     </CardContainer>
+                  </TouchableOpacityContainer>
+               )}
+            />
+         ) : (
+            <EmptyContainer>
+               <EmptyText>Public repositories empty</EmptyText>
+               <StyledIconEmpty name="frown" />
+            </EmptyContainer>
+         )}
       </>
    );
 };

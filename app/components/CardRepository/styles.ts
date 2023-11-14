@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import Icon from "react-native-vector-icons/Feather";
 
 export const TouchableOpacityContainer = styled.TouchableOpacity`
    background-color: ${({ theme }) => theme.colors.primary};
@@ -130,4 +131,24 @@ export const DataLastCommitText = styled.Text`
    font-weight: normal;
    color: ${({ theme }) => theme.colors.text_secondary};
    font-family: monospace;
+`;
+
+export const EmptyText = styled.Text`
+   padding-bottom: 10px;
+   font-size: 16px;
+   font-weight: normal;
+   color: ${({ theme }) => theme.colors.text_primary};
+   font-family: monospace;
+`;
+
+export const StyledIconEmpty = styled(Icon)`
+   color: ${({ theme }) => theme.colors.text_secondary};
+   font-size: 18px;
+   margin-left: 10px;
+`;
+
+export const EmptyContainer = styled.View`
+   flex-direction: row;
+   padding: 40px;
+   justify-content: center;
 `;
