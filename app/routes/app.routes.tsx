@@ -1,12 +1,11 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-
 import { HomePage } from "../screens/Homepage";
 import { History } from "../screens/History";
 import { Details } from "../screens/Details";
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
-export const MyStack = () => {
+export const AppRoutes = () => {
    return (
       <>
          <Navigator>
