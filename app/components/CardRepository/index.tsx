@@ -63,14 +63,19 @@ export const CardRepository = ({ repositoryList }: CardRepositoryProps) => {
                         <DescriptionText>{item.description}</DescriptionText>
                         <DataRepoContainer>
                            <TechContainer>
-                              <CircleColorTech
-                                 style={{
-                                    backgroundColor: getColorForLanguage(
-                                       item.language
-                                    ),
-                                 }}
-                              />
-                              <TechText>{item.language}</TechText>
+                              {item.language && (
+                                 <>
+                                    <CircleColorTech
+                                       style={{
+                                          backgroundColor: getColorForLanguage(
+                                             item.language
+                                          ),
+                                       }}
+                                    />
+                                    <TechText>{item.language}</TechText>
+                                 </>
+                              )}
+                              {!item.language && <TechText></TechText>}
                            </TechContainer>
                            <CreateAtContainer>
                               <CreateAtText>CreateAt:</CreateAtText>
