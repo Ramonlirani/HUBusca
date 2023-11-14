@@ -98,4 +98,4 @@ Por fim ao visualizar o histórico na tela que exibia a lista dos usuários rece
 
 ## :iphone: Link do download do APK android
 Google Drive
-([https://uploadnow.io/files/487b9jv](https://drive.google.com/file/d/1PfOiEkJRv0YNeK17kj9F2aXsRsJU9EOO/view?usp=sharing)https://drive.google.com/file/d/1PfOiEkJRv0YNeK17kj9F2aXsRsJU9EOO/view?usp=sharing)
+(https://drive.google.com/file/d/1PfOiEkJRv0YNeK17kj9F2aXsRsJU9EOO/view?usp=drive_link)
