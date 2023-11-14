@@ -75,12 +75,13 @@ export const ProfileUser = ({ user }: { user: UserProps }) => {
                      ID: <NumberText>{user.id}</NumberText>
                   </IDText>
                </HeaderIDUserContainer>
-               {user.location && (
-                  <HeaderLocationUserContainer>
-                     <StyledIconLocation name="map-pin" />
-                     <LocationText>{user.location}</LocationText>
-                  </HeaderLocationUserContainer>
-               )}
+
+               <HeaderLocationUserContainer>
+                  <StyledIconLocation name="map-pin" />
+                  <LocationText>
+                     {user.location ? user.location : "N/A"}
+                  </LocationText>
+               </HeaderLocationUserContainer>
             </HeaderDataUserContainer>
             <HeaderQuantityRepoContainer>
                <QuantityRepoText>
