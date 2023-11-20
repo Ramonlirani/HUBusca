@@ -3,7 +3,7 @@
 
 
 ## :bookmark_tabs: Sobre o Projeto Desenvolvido 
-Este projeto é um aplicativo de busca de perfis e repositórios no GitHub, desenvolvida como parte de um teste para um processo seletivo na ClickSoft. O aplicativo foi criado com o objetivo de demonstrar meus conhecimentos e habilidades em desenvolvimento mobile.
+Este projeto é um aplicativo de busca de perfis e repositórios no GitHub, desenvolvida como parte de um teste para um processo seletivo na ClickSoft. O aplicativo foi criado com o objetivo de demonstrar meus conhecimentos e habilidades em desenvolvimento mobile. Tentei aproximar ao máximo do designer do próprio github.
 
 ## :page_with_curl: Requisitos do Projeto
 1. Permita que na tela principal busquemos os dados de uma pessoa do GitHub
